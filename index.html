@@ -1,0 +1,57 @@
+<!--
+  Author: Shoikot Sen
+  Project: Expense Tracker Web App
+  Description: A responsive and interactive web application that allows users to add expenses, 
+               categorize them, store the data in localStorage, and visualize spending trends using Chart.js.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic HTML setup -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Expense Tracker</title>
+  
+  <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Load Chart.js from CDN for chart visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- App title -->
+    <h1>Expense Tracker</h1>
+
+    <!-- Form to input expense data -->
+    <form id="expense-form">
+      <input type="text" id="description" placeholder="Description" required />
+      <input type="number" id="amount" placeholder="Amount" required />
+      
+      <!-- Dropdown to select expense category -->
+      <select id="category">
+        <option value="Food">Food</option>
+        <option value="Transport">Transport</option>
+        <option value="Utilities">Utilities</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <!-- Submit button to add expense -->
+      <button type="submit">Add Expense</button>
+    </form>
+
+    <!-- List to display added expenses -->
+    <ul id="expense-list"></ul>
+
+    <!-- Container for the pie chart -->
+    <div class="chart-container">
+      <canvas id="expense-chart"></canvas>
+    </div>
+  </div>
+
+  <!-- JavaScript file containing logic for form handling, localStorage, and chart -->
+  <script src="script.js"></script>
+</body>
+</html>

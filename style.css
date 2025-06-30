@@ -1,0 +1,54 @@
+/* 
+  Author: Shoikot Sen
+  Project: Expense Tracker Web App
+  Description: This CSS file styles the Expense Tracker UI, giving it a clean and minimal look.
+*/
+
+/* Apply a clean font and remove default margins */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4; /* Light grey background */
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the main content and style the container */
+.container {
+  max-width: 600px;
+  margin: 50px auto; /* Center vertically with space on top */
+  padding: 20px;
+  background: #fff; /* White background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Layout the form in a vertical stack */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style input fields, select box, and submit button */
+form input, form select, form button {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+/* Remove bullets from the list and spacing reset */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Style each expense item */
+ul li {
+  padding: 8px;
+  margin: 5px 0;
+  background: #e2e2e2; /* Light grey block for each entry */
+  display: flex;
+  justify-content: space-between; /* Description on left, category on right */
+}
+
+/* Space for the chart at the bottom */
+.chart-container {
+  margin-top: 20px;
+}
