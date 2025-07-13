@@ -94,27 +94,39 @@ function updateChart() {
   }
 
   window.expenseChart = new Chart(chartCanvas, {
-    type: 'pie',
-    data: {
-      labels: labels,
-      datasets: [{
-        data: data,
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
-      }]
-    },
-    options: {
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: function (context) {
-              const total = context.dataset.data.reduce((a, b) => a + b, 0);
-              const value = context.raw;
-              const percentage = ((value / total) * 100).toFixed(1) + '%';
-              return `${context.label}: $${value.toFixed(2)} (${percentage})`;
-            }
+  type: 'pie',
+  data: {
+    labels: labels,
+    datasets: [{
+      data: data,
+      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
+    }]
+  },
+  options: {
+    plugins: {
+      datalabels: {
+        color: '#fff',
+        formatter: (value, ctx) => {
+          let total = ctx.chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+          let percentage = (value / total * 100).toFixed(1) + '%';
+          return percentage;
+        },
+        font: {
+          weight: 'bold',
+          size: 14
+        }
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            const total = context.dataset.data.reduce((a, b) => a + b, 0);
+            const value = context.raw;
+            const percentage = ((value / total) * 100).toFixed(1) + '%';
+            return `${context.label}: $${value.toFixed(2)} (${percentage})`;
           }
         }
       }
     }
-  });
-}
+  },
+  plugins: [ChartDataLabels]
+});
