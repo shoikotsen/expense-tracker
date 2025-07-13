@@ -11,47 +11,39 @@ const form = document.getElementById('expense-form');
 const list = document.getElementById('expense-list');
 const chartCanvas = document.getElementById('expense-chart').getContext('2d');
 
-// Load previously saved expenses from localStorage or start with an empty array
+// Load expenses from localStorage or start empty
 let expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
-// Initialize the list and chart on page load
+// Initialize on page load
 updateList();
 updateChart();
 
-// When the form is submitted, add a new expense
+// Add expense on form submit
 form.addEventListener('submit', function (e) {
-  e.preventDefault(); // Prevent page reload
+  e.preventDefault();
 
-  // Get input values
   const description = document.getElementById('description').value;
   const amount = parseFloat(document.getElementById('amount').value);
   const category = document.getElementById('category').value;
 
   if (description && !isNaN(amount)) {
-    // Create an expense object
-    const expense = { description, amount, category };
-
-    // Add it to the list and save to localStorage
-    expenses.push(expense);
+    expenses.push({ description, amount, category });
     localStorage.setItem('expenses', JSON.stringify(expenses));
-
-    // Update UI and chart
     updateList();
     updateChart();
-
-    // Reset the form
     form.reset();
   }
 });
 
-// Update the expense list with Delete buttons
+// Update expense list with Delete buttons
 function updateList() {
-  list.innerHTML = ''; // Clear existing list
+  list.innerHTML = '';
 
   expenses.forEach((expense, index) => {
     const item = document.createElement('li');
     item.innerHTML = `
-      ${expense.description} - $${expense.amount.toFixed(2)} <span>${expense.category}</span>
+      ${expense.description} - $${expense.amount.toFixed(2)}
+      <span>${expense.category}</span>
       <button class="delete-btn" onclick="deleteExpense(${index})">Delete</button>
     `;
     list.appendChild(item);
@@ -67,17 +59,19 @@ function updateList() {
   }
 }
 
-// Delete a single expense by index
+// Delete a single expense
 function deleteExpense(index) {
-  expenses.splice(index, 1);
-  localStorage.setItem('expenses', JSON.stringify(expenses));
-  updateList();
-  updateChart();
+  if (confirm('Delete this expense?')) {
+    expenses.splice(index, 1);
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+    updateList();
+    updateChart();
+  }
 }
 
 // Clear all expenses
 function clearAllExpenses() {
-  if (confirm('Are you sure you want to delete all expenses?')) {
+  if (confirm('Delete ALL expenses?')) {
     expenses = [];
     localStorage.removeItem('expenses');
     updateList();
@@ -85,15 +79,15 @@ function clearAllExpenses() {
   }
 }
 
-// Update the pie chart
+// Update the pie chart with percentages
 function updateChart() {
-  const categoryTotals = expenses.reduce((totals, expense) => {
-    totals[expense.category] = (totals[expense.category] || 0) + expense.amount;
-    return totals;
+  const totals = expenses.reduce((acc, expense) => {
+    acc[expense.category] = (acc[expense.category] || 0) + expense.amount;
+    return acc;
   }, {});
 
-  const labels = Object.keys(categoryTotals);
-  const data = Object.values(categoryTotals);
+  const labels = Object.keys(totals);
+  const data = Object.values(totals);
 
   if (window.expenseChart) {
     window.expenseChart.destroy();
@@ -104,10 +98,23 @@ function updateChart() {
     data: {
       labels: labels,
       datasets: [{
-        label: 'Expenses by Category',
         data: data,
         backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0']
       }]
+    },
+    options: {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function (context) {
+              const total = context.dataset.data.reduce((a, b) => a + b, 0);
+              const value = context.raw;
+              const percentage = ((value / total) * 100).toFixed(1) + '%';
+              return `${context.label}: $${value.toFixed(2)} (${percentage})`;
+            }
+          }
+        }
+      }
     }
   });
 }

@@ -1,13 +1,13 @@
 /* 
   Author: Shoikot Sen
   Project: Expense Tracker Web App
-  Description: This CSS file styles the Expense Tracker UI, giving it a clean and minimal look.
+  Description: Clean and responsive styles for Expense Tracker with Delete & Clear All buttons.
 */
 
-/* Apply a clean font and remove default margins */
+/* Apply a clean font and center everything */
 body {
   font-family: Arial, sans-serif;
-  background: #f4f4f4; /* Light grey background */
+  background: #f4f4f4;
   margin: 0;
   padding: 0;
   display: flex;
@@ -16,15 +16,15 @@ body {
   min-height: 100vh;
 }
 
-/* Center the main content and style the container */
+/* Main container */
 .container {
   max-width: 600px;
   width: 90%;
   margin: 20px;
   padding: 20px;
-  background: #fff; /* White background */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  border-radius: 8px; /* Rounded corners */
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 /* App title */
@@ -34,13 +34,13 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Layout the form in a vertical stack */
+/* Form layout */
 form {
   display: flex;
   flex-direction: column;
 }
 
-/* Style input fields, select box, and submit button */
+/* Style inputs, select and submit button */
 form input,
 form select,
 form button {
@@ -51,7 +51,7 @@ form button {
   border-radius: 4px;
 }
 
-/* Style the Add Expense button */
+/* Add Expense button */
 form button {
   background-color: #007bff; /* Bootstrap blue */
   color: #fff;
@@ -63,28 +63,28 @@ form button:hover {
   background-color: #0056b3;
 }
 
-/* Remove bullets from the list and spacing reset */
+/* Expenses list styling */
 ul {
   list-style: none;
   padding: 0;
   margin: 20px 0 0;
 }
 
-/* Style each expense item */
 ul li {
   padding: 10px;
   margin: 8px 0;
-  background: #e2e2e2; /* Light grey block for each entry */
+  background: #e2e2e2;
   display: flex;
-  justify-content: space-between; /* Description on left, buttons on right */
+  justify-content: space-between;
   align-items: center;
   border-radius: 4px;
+  flex-wrap: wrap;
 }
 
 /* Delete button for each expense */
 .delete-btn {
   margin-left: 10px;
-  background-color: #dc3545; /* Bootstrap red */
+  background-color: #dc3545; /* Red */
   color: #fff;
   border: none;
   padding: 6px 10px;
@@ -114,7 +114,7 @@ ul li {
   background-color: #5a6268;
 }
 
-/* Space for the chart at the bottom */
+/* Chart container spacing */
 .chart-container {
   margin-top: 30px;
 }
