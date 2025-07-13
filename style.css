@@ -10,15 +10,28 @@ body {
   background: #f4f4f4; /* Light grey background */
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
 /* Center the main content and style the container */
 .container {
   max-width: 600px;
-  margin: 50px auto; /* Center vertically with space on top */
+  width: 90%;
+  margin: 20px;
   padding: 20px;
   background: #fff; /* White background */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  border-radius: 8px; /* Rounded corners */
+}
+
+/* App title */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 /* Layout the form in a vertical stack */
@@ -28,27 +41,80 @@ form {
 }
 
 /* Style input fields, select box, and submit button */
-form input, form select, form button {
+form input,
+form select,
+form button {
   margin: 10px 0;
-  padding: 10px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style the Add Expense button */
+form button {
+  background-color: #007bff; /* Bootstrap blue */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #0056b3;
 }
 
 /* Remove bullets from the list and spacing reset */
 ul {
   list-style: none;
   padding: 0;
+  margin: 20px 0 0;
 }
 
 /* Style each expense item */
 ul li {
-  padding: 8px;
-  margin: 5px 0;
+  padding: 10px;
+  margin: 8px 0;
   background: #e2e2e2; /* Light grey block for each entry */
   display: flex;
-  justify-content: space-between; /* Description on left, category on right */
+  justify-content: space-between; /* Description on left, buttons on right */
+  align-items: center;
+  border-radius: 4px;
+}
+
+/* Delete button for each expense */
+.delete-btn {
+  margin-left: 10px;
+  background-color: #dc3545; /* Bootstrap red */
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Clear All button */
+.clear-btn {
+  margin-top: 15px;
+  background-color: #6c757d; /* Grey */
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+  font-size: 16px;
+}
+
+.clear-btn:hover {
+  background-color: #5a6268;
 }
 
 /* Space for the chart at the bottom */
 .chart-container {
-  margin-top: 20px;
+  margin-top: 30px;
 }
