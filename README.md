@@ -1,102 +1,34 @@
-# 💸 Expense Tracker App
+# Expense Tracker
 
-A simple, clean, and interactive web-based Expense Tracker that lets users log their daily expenses, categorize them, visualize spending trends with a pie chart, and save data persistently using `localStorage`.
+A responsive expense and income tracker built with HTML, CSS and vanilla JavaScript. Data is saved in your browser with `localStorage`, so nothing is uploaded anywhere.
 
----
+**Live demo:** https://shoikotsen.github.io/expense-tracker/
 
-## 🚀 Features
+## Features
 
-- ✅ Add expenses with description, amount, and category
-- ✅ Display expense list dynamically
-- ✅ Interactive **Pie Chart** using Chart.js
-- ✅ Data stored in **localStorage** (persists across sessions)
-- ✅ Responsive and clean user interface
+- Add, edit and delete income and expenses, with Undo after a delete
+- Custom categories you can add and remove
+- Summary cards for balance, income and expenses
+- Monthly budget with a progress bar
+- Charts for the last 1 to 6 months: spending by category and income vs expenses (Chart.js)
+- Search, filter by category or month, and sort
+- Currency choice (USD, BDT, EUR, GBP, INR)
+- Export to CSV
+- Dark mode and a mobile-friendly layout
 
----
+## Run locally
 
-## 🖼️ Live Preview
+Download the repository and open `index.html` in a browser. No build tools or server needed.
 
-To view the app:
-1. Open `index.html` in your browser
-2. Start adding your expenses!
+## Tech stack
 
----
+HTML5, CSS3, JavaScript (vanilla), Chart.js via CDN
 
-## 🧰 Tech Stack
+## Author
 
-- **HTML5**
-- **CSS3**
-- **JavaScript (Vanilla)**
-- **Chart.js** (via CDN)
+Shoikot Sen, Computer Science student at the University of South Florida.
+GitHub: [@shoikotsen](https://github.com/shoikotsen)
 
----
+## License
 
-## 📁 File Structure
-
-expense_tracker_enhanced/
-├── index.html # Main HTML file
-├── style.css # Styling for layout and components
-├── script.js # Logic for expenses, localStorage, and charts
-└── README.md # Project documentation
-
-
-
----
-
-## 📊 How It Works
-
-1. User submits the form with a description, amount, and category
-2. Expense is stored in an array and saved in `localStorage`
-3. The list is updated on the page dynamically
-4. The pie chart visualizes total expense per category
-
----
-
-## 🧠 Key Concepts
-
-- DOM Manipulation
-- Event Handling
-- Chart.js for Data Visualization
-- Data Persistence using `localStorage`
-- Array Manipulation in JS
-
----
-
-## 📦 To Use Locally
-
-1. Download or clone the repository:
-
-2. Open `index.html` in your browser.
-3. No build tools or server needed — 100% client-side.
-
----
-
-## 💡 Future Enhancements
-
-- [ ] Add delete/edit functionality per transaction
-- [ ] Show total balance and monthly breakdown
-- [ ] Export expenses to CSV
-- [ ] Category filtering and search
-
----
-
-## 🧑‍💻 Developed By
-
-**Shoikot Sen**  
-Computer Science Student at the University of South Florida  
-GitHub: [@yourusername](https://github.com/yourusername)
-
----
-
-## 📜 License
-
-This project is open-source and available under the [MIT License](LICENSE).
-
-
-## Website Picture
-
-<img width="2830" height="1710" alt="Screenshot (167)" src="https://github.com/user-attachments/assets/c15fefeb-e1a5-4f84-99c5-32327180c7ea" />
-
-
-
-
+MIT
